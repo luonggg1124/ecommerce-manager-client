@@ -72,7 +72,7 @@ const CategorySection: FC<CategorySectionProps> = ({ title, items }) => {
                         <li
                           key={idx}
                           className={cn(
-                            "text-gray-600 hover:text-black cursor-pointer",
+                            "text-gray-600 hover:text-black text-[12px] cursor-pointer",
                             "transition-all duration-200",
                             "relative pl-4",
                             "before:absolute before:left-0 before:top-1/2 before:w-0 before:h-0.5",
