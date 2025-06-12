@@ -1,7 +1,7 @@
 import type { FC } from "react";
 
 import MobileHeader from "./components/mobile";
-import WindowHeader from "./components/window";
+import WindowHeader from "./components/desktop";
 
 type HeaderProps = {
   data?: string;
