@@ -15,13 +15,15 @@ const SearchSection: React.FC<SearchSectionProps> = ({
   if (!open) return null;
   return (
     <div
-      className={cn(
-        "fixed top-0 left-0 right-0 min-h-[240px] bg-white z-[60]",
-        "transition-all duration-600 ease-out",
-        "animate-in fade-in slide-in-from-bottom-15 slide-in-from-right-20"
-      )}
+      className={cn("fixed top-0 left-0 right-0 min-h-[240px] bg-white z-[60]")}
     >
-      <div className="flex items-center justify-between py-2 px-8">
+      <div
+        className={cn(
+          "flex items-center justify-between py-2 px-8",
+          "transition-all duration-400 ease-out",
+          "animate-in fade-in slide-in-from-bottom-20 slide-in-from-right-20"
+        )}
+      >
         <div>
           <Atom color="#5db8fe" size={30} />
         </div>
@@ -31,7 +33,9 @@ const SearchSection: React.FC<SearchSectionProps> = ({
           </div>
           <Input className="rounded-3xl pl-12 focus-visible:ring-0 border-0 bg-gray-200 hover:bg-gray-100" />
         </div>
-        <button onClick={() => setOpen?.(false)}>Cancel</button>
+        <button className="cursor-pointer" onClick={() => setOpen?.(false)}>
+          Cancel
+        </button>
       </div>
       <div
         className={cn(

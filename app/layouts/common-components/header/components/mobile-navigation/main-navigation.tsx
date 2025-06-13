@@ -17,12 +17,24 @@ const CategorySection = () => {
       <ul className="flex flex-col gap-4">
         {Array.from({ length: 6 }).map((_, index) => {
           return (
-            <li
-              key={index}
-              className="text-lg font-bold  flex items-center justify-between"
-            >
-              <h3>Category</h3>
-              <ChevronRight color="#474747" />
+            <li key={index}>
+              <Sheet>
+                <SheetTrigger className="text-lg font-bold  flex items-center justify-between">
+                  <h3>Category</h3>
+                  <ChevronRight color="#474747" />
+                </SheetTrigger>
+                <SheetContent className="overflow-auto">
+                  <SheetHeader>
+                    <SheetTitle>
+                      <div className="my-2" />
+                    </SheetTitle>
+                    <SheetDescription>
+                      <div className="my-4" />
+                    </SheetDescription>
+                  </SheetHeader>
+                  {/* Category Section */}
+                </SheetContent>
+              </Sheet>
             </li>
           );
         })}
@@ -46,6 +58,7 @@ const MainNavigation = () => {
             <div className="my-4" />
           </SheetDescription>
         </SheetHeader>
+        {/* Category Section */}
         <CategorySection />
         <SheetFooter>
           <Button type="submit">Save changes</Button>
