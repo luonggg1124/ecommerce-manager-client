@@ -1,7 +1,7 @@
 import type { FC } from "react";
-
-import MobileHeader from "./components/mobile";
-import WindowHeader from "./components/desktop";
+import MobileNavigation from "./components/mobile-navigation";
+import DesktopNavigation from "./components/desktop-navigation";
+import Banner from "./components/banner";
 
 type HeaderProps = {
   data?: string;
@@ -11,8 +11,9 @@ const Header: FC<HeaderProps> = ({ data }) => {
 
   return (
     <div>
-      <MobileHeader />
-      <WindowHeader />
+      <MobileNavigation />
+      <DesktopNavigation />
+      <Banner />
     </div>
   );
 };

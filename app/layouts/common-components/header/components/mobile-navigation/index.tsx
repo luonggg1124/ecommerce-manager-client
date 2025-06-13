@@ -4,7 +4,9 @@ import { Atom, Search, ShoppingBag, User } from "lucide-react";
 import MainNavigation from "./main-navigation";
 import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
-const Navbar = () => {
+import SearchSection from "../common-components/search-section";
+const MobileNavigation = () => {
+  const [openSearch, setOpenSearch] = useState(false);
   const [isFixed, setIsFixed] = useState(false);
   const lastScrollY = useRef(0);
 
@@ -36,7 +38,8 @@ const Navbar = () => {
         className.pxApp,
         "bg-white ",
         "transition-all duration-300 ease-in-out",
-        isFixed ? "fixed top-0 left-0 right-0 shadow-sm" : "relative"
+        isFixed ? "fixed top-0 left-0 right-0 shadow-sm" : "relative",
+        "lg:hidden"
       )}
       // {`flex items-center justify-between h-14 ${className.pxApp}`}
     >
@@ -45,7 +48,7 @@ const Navbar = () => {
       </div>
       <ul className="flex items-center gap-4 text-gray-600">
         <li>
-          <Search />
+          <Search onClick={() => setOpenSearch(true)} />
         </li>
         <li>
           <User />
@@ -57,7 +60,8 @@ const Navbar = () => {
           <MainNavigation />
         </li>
       </ul>
+      <SearchSection open={openSearch} setOpen={setOpenSearch} />
     </div>
   );
 };
-export default Navbar;
+export default MobileNavigation;

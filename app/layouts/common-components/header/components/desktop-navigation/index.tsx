@@ -1,12 +1,12 @@
 import TopNavigation from "./top-navigation";
 import MainNavigation from "./main-navigation";
 
-const Navigation = () => {
+const DesktopNavigation = () => {
   return (
-    <nav aria-label="Global navigation ">
+    <nav className="hidden lg:block" aria-label="Global navigation ">
       <TopNavigation />
       <MainNavigation />
     </nav>
   );
 };
-export default Navigation;
+export default DesktopNavigation;

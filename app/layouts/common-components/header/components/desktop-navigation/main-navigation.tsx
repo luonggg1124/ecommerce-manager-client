@@ -1,8 +1,10 @@
 import className from "@/constants/class-name";
-import { AlignJustify, Atom, Search, ShoppingBag, User } from "lucide-react";
+import { Atom, Heart, Search, ShoppingBag } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { FC } from "react";
 import { useEffect, useRef, useState } from "react";
+import { Input } from "@/components/ui/input";
+import SearchSection from "../common-components/search-section";
 
 type CategorySectionProps = {
   title?: string;
@@ -119,6 +121,7 @@ const CategorySection: FC<CategorySectionProps> = ({
 };
 
 const MainNavigation = () => {
+  const [openSearch, setOpenSearch] = useState(false);
   const [isFixed, setIsFixed] = useState(false);
   const lastScrollY = useRef(0);
 
@@ -147,7 +150,7 @@ const MainNavigation = () => {
   return (
     <div
       className={cn(
-        "h-14 z-30",
+        "h-14 z-[60]",
         "bg-white ",
         "transition-all duration-300 ease-in-out",
         isFixed ? "fixed top-0 left-0 right-0 shadow-md" : "relative"
@@ -160,15 +163,17 @@ const MainNavigation = () => {
           {/* logo */}
           <Atom color="#5db8fe" size={30} />
         </div>
+        {/* Mid nav */}
         <nav className="flex items-center justify-center">
-          <ul className="flex items-center gap-4 text-gray-600">
+          <ul className="flex items-center gap-4 text-gray-600 ">
             <li>
               <CategorySection
                 isFixed={isFixed}
                 title="New and Featured"
-                items={["New and Featured"]}
+                items={["New and Featured "]}
               />
             </li>
+
             <li>
               <CategorySection
                 isFixed={isFixed}
@@ -199,23 +204,36 @@ const MainNavigation = () => {
             </li>
           </ul>
         </nav>
+        {/* last */}
         <nav className="flex justify-end">
           <ul className="flex items-center gap-4 text-gray-600">
-            <li>
-              <Search />
+            <li
+              className={cn(
+                "flex items-center relative overflow-hidden",
+                openSearch ? "mr-4" : "",
+                "transition-all duration-500 ease-in-out",
+                "animate-in fade-in-50 slide-in-from-left-100"
+              )}
+            >
+              <div className="absolute size-9 rounded-full flex items-center justify-center">
+                <Search size={18} />
+              </div>
+              <Input
+                onClick={() => setOpenSearch(true)}
+                placeholder="Search"
+                className="pl-9 w-[140px] rounded-3xl focus-visible:ring-0 border-gray-200 hover:opacity-70"
+              />
             </li>
             <li>
-              <User />
+              <Heart />
             </li>
             <li>
               <ShoppingBag />
             </li>
-            <li>
-              <AlignJustify />
-            </li>
           </ul>
         </nav>
       </div>
+      <SearchSection open={openSearch} setOpen={setOpenSearch} />
     </div>
   );
 };
